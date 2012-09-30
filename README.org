@@ -1,0 +1,27 @@
+* Read Exp(ression)
+  ReadExp is a small library to help with the parsing of mathematical
+  expressions. Currently it only skips spaces, reads umbers and any
+  other symbol it encounters, categorizes as operator. There is some
+  code for use of arbitrary number base but doesnt work ATM and
+  floating point numbers may be added at some point. Note that this
+  only uses string.h so it can work on embeded systems with little to
+  no effort. Also the library is designed to be fed the characters one
+  by one and return results in real time.
+
+** Usage notes
+   Use `getOp(char)` to feed the library characters of the expression
+   one by one and returns a `struct symbol`:
+
+
+   #+BEGIN_SRC C
+   struct symbol {
+    unsigned type;
+    char cval;
+    int val;
+   };
+   #+END_SRC
+
+   and for `type` the flags `NUMBER`, `OPERATOR` and `INVALID` are
+   defined. getOp returns one by one the symbols it finds. `burstOp`
+   has the exact same syntax only it may return a symbol that contains
+   both a number and an operator.
