@@ -1,6 +1,9 @@
 #include <string.h>
 #include "readexp.h"
 
+/* Abs for security reasons. */
+#define AB(x) (((x)>0)?(x):0)
+#define AMIN(x,y) (AB(x)>AB(y)?AB(y):AB(x))
 
 /* type is non-nil only when last_read changes value. */
 struct number_reader {
@@ -32,7 +35,8 @@ int digit(char c, struct number_reader* n)
 	    }
     }
 
-    if (c <= '9' && c >= '0') return c - (int)'0';
+    if (c <= '0' + AMIN(n->base, 9) && c >= '0') return c - (int)'0';
+    else if (c >= 'a' && c < 'a' + AMIN('z'-'a',n->base-9) + 1) return c - 'a' + 10;
     return -1;
 }
 
