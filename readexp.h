@@ -4,7 +4,8 @@
 struct symbol {
     unsigned type;
     char cval;
-    int val;
+    int ival;
+    float fval;
 };
 
 
@@ -12,6 +13,7 @@ struct symbol {
 #define INVALID 0x0
 #define NUMBER 0x1
 #define OPERATOR 0x2
+#define FLOAT 0x4
 
 /* Does the same as getOp only a symbol struct may contain both a
  * nuber and an operator. */
