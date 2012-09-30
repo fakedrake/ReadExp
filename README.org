@@ -27,3 +27,9 @@
    corresponding member is valid. getOp returns one by one the symbols
    it finds. `burstOp` has the exact same syntax only it may return a
    symbol that contains both a number and an operator.
+
+
+** Building
+
+   Just run `cmake .` and then you have full access to the library via
+   the header and the .a file.
