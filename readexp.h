@@ -15,6 +15,9 @@ struct symbol {
 #define OPERATOR 0x2
 #define FLOAT 0x4
 
+/* Some handy macros */
+#define VALID(s) ((s).type != 0)
+
 /* Does the same as getOp only a symbol struct may contain both a
  * nuber and an operator. */
 struct symbol burstOp(char);

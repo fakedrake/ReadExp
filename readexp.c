@@ -25,7 +25,7 @@ int digit(char c, struct number_reader* n)
     if ( n ) {
 	if (n->base == 0) n->base = 10;
 
-	if (c == '#')
+	if (c == '#') {
 	    if (n->value > 0) {
 		n->base = n->value;
 		n->value = 0;
@@ -33,6 +33,7 @@ int digit(char c, struct number_reader* n)
 	    } else {
 		return -1;
 	    }
+	}
     }
 
     if (c <= '0' + AMIN(n->base, 9) && c >= '0') return c - (int)'0';
@@ -135,7 +136,7 @@ struct symbol burstOp(char c)
     static struct number_reader n = {0,0,0,0};
     static struct op_reader o = {0,0};
     struct symbol ret = {0,0,0};
-    int items = 0, start = 0;
+    int items = 0;
     parse(c, &n, &o);
     if (n.ready) {
 	if(n.fp) {
