@@ -31,5 +31,5 @@
 
 ** Building
 
-   Just run `cmake .` and then you have full access to the library via
+   Just run `cmake .` and `make` and then you have full access to the library via
    the header and the .a file.
